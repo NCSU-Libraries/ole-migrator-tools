@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    /*
+    dependencies {
+        classpath project(":groovy-marc")
+    }*/
+}
+
+dependencies {
+    compile 'info.freelibrary:freelib-marc4j:2.6.3'
+    compile 'org.codehaus.gpars:gpars:1.2.1@jar'
+    compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7@jar'
+    //compile 'com.google.guava:guava:18.0'
+    compile "javax.validation:validation-api:1.1.0.Final"
+    compile 'org.apache.commons:commons-pool2:2.2@jar'
+    compile 'org.apache.commons:commons-lang3:3.3.2@jar'
+    compile 'org.apache.commons:commons-dbcp2:2.0.1'
+    //
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.0'
+    runtime 'commons-cli:commons-cli:1.2@jar'
+}
+

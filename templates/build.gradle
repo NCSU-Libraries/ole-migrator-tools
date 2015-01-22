@@ -1,0 +1,83 @@
+apply plugin: "application"
+
+/**
+ * You can write your script as a class with a main(args) method,
+ * or you can use this wrapper, which sets up and executes
+ * the <code>driver.groovy</code> script in this directory.
+ **/
+mainClassName = "${packageName}.Main"
+
+/**
+ * Sets up the classpath for the various phases of the gradle 
+ * build.  Note some parameters are inherited from the project defaults
+ * defined in the root build.gradle.
+ **/
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        classpath 'info.freelibrary:freelib-marc4j:2.6.3@jar'
+        classpath project(":migrator-base")
+        // add this if you want to use GPars concurrency
+        classpath "org.codehaus.gpars:gpars:1.2.1@jar"
+    }
+}
+
+/**
+ * We need to jump through some hoops to make sure our application
+ * code can 'see' the JDBC drivers.  This has to do with classloader
+ * inheritance.
+ * @see http://stackoverflow.com/questions/6329872/how-to-add-external-jar-files-to-gradle-build-script for more info about why it's necessary.
+
+ * The kicker is that every JDBC driver needs to be specified both for 
+ * the "runtime" configuration as well as for our custom 'jdbcDriver'
+ * configuration.
+ **/
+configurations {
+   jdbcDriver 
+}
+
+dependencies {
+    // persistors etc.
+    compile project(":migrator-base")
+    compile 'info.freelibrary:freelib-marc4j:2.6.3@jar'
+    compile 'org.codehaus.groovy:groovy-all:2.3.9:sources@jar'
+    compile 'org.codehaus.gpars:gpars:1.2.1@jar'
+    compile "org.codehaus.jsr166-mirror:jsr166y:1.7.0@jar"
+    compile 'org.apache.commons:commons-pool2:2.2@jar'
+    compile 'org.apache.commons:commons-lang3:3.3.2@jar'
+    compile 'org.apache.commons:commons-dbcp2:2.0.1'
+    runtime 'commons-cli:commons-cli:1.2@jar'
+
+    // all JDBC drivers should be either on "compile"
+    // or "runtime" classpaths.
+    runtime 'com.oracle:ojdbc7:12.1.0.1@jar'
+
+    // If you plan to use the MigrationDataSource utilities,
+    // this is a good fit.
+    runtime 'com.h2database:h2:1.4.182@jar'
+    runtime 'mysql:mysql-connector-java:5.1.31@jar'
+
+    // There are mariadb drivers too, but they have a component 
+    // that cannot be downloaded from standard repos?
+    /*runtime ('org.mariadb.jdbc:mariadb-java-client:1.1.7') {
+            exclude module: 'jna'
+        }
+    jdbcDriver ('org.mariadb.jdbc:mariadb-java-client:1.1.7') {
+        exclude module: 'jna'
+    }
+      */
+    jdbcDriver 'com.h2database:h2:1.4.182@jar'
+    jdbcDriver 'mysql:mysql-connector-java:5.1.31@jar'
+}
+
+// here's where we 'inject' the JDBC drivers.
+URLClassLoader loader = GroovyObject.class.classLoader
+
+configurations.jdbcDriver.each { 
+    File file ->
+        loader.addURL(file.toURI().toURL())
+}

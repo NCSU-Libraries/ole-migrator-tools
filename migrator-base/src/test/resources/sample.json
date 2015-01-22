@@ -1,0 +1,133 @@
+
+  {
+    "bib_id": "495144",
+    "content": "<collection xmlns='http://www.loc.gov/MARC21/slim'>\n  <record>\n    <leader>00671cam a22002418a 4500</leader>\n    <controlfield tag='001'>495144</controlfield>\n    <controlfield tag='008'>790209s1980    nhua     b   s00110 enge </controlfield>\n    <datafield tag='010' ind1=' ' ind2=' '>\n      <subfield code='a'>   78069899</subfield>\n    </datafield>\n    <datafield tag='020' ind1=' ' ind2=' '>\n      <subfield code='a'>0874511585</subfield>\n    </datafield>\n    <datafield tag='035' ind1=' ' ind2=' '>\n      <subfield code='a'>(OCoLC)4834319</subfield>\n    </datafield>\n    <datafield tag='040' ind1=' ' ind2=' '>\n      <subfield code='a'>DLC</subfield>\n      <subfield code='c'>DLC</subfield>\n      <subfield code='d'>NRC</subfield>\n    </datafield>\n    <datafield tag='043' ind1=' ' ind2=' '>\n      <subfield code='a'>n-us---</subfield>\n    </datafield>\n    <datafield tag='082' ind1=' ' ind2=' '>\n      <subfield code='a'>746/.0974</subfield>\n    </datafield>\n    <datafield tag='100' ind1='1' ind2=' '>\n      <subfield code='a'>Gordon, Beverly.</subfield>\n    </datafield>\n    <datafield tag='245' ind1='1' ind2='0'>\n      <subfield code='a'>Shaker textiles /</subfield>\n      <subfield code='c'>Beverly Gordon.</subfield>\n    </datafield>\n    <datafield tag='260' ind1=' ' ind2=' '>\n      <subfield code='a'>Hanover, N.H. :</subfield>\n      <subfield code='b'>University Press of New England,</subfield>\n      <subfield code='c'>c1980.</subfield>\n    </datafield>\n    <datafield tag='300' ind1=' ' ind2=' '>\n      <subfield code='a'>xiv, 329 p. :</subfield>\n      <subfield code='b'>ill. ;</subfield>\n      <subfield code='c'>21 cm.</subfield>\n    </datafield>\n    <datafield tag='500' ind1=' ' ind2=' '>\n      <subfield code='a'>Includes index.</subfield>\n    </datafield>\n    <datafield tag='504' ind1=' ' ind2=' '>\n      <subfield code='a'>Bibliography: p. [291]-299.</subfield>\n    </datafield>\n    <datafield tag='596' ind1=' ' ind2=' '>\n      <subfield code='a'>14</subfield>\n    </datafield>\n    <datafield tag='650' ind1=' ' ind2='0'>\n      <subfield code='a'>Shaker textile fabrics.</subfield>\n    </datafield>\n    <datafield tag='948' ind1=' ' ind2=' '>\n      <subfield code='a'>06/15/1993</subfield>\n      <subfield code='b'>10/22/1996</subfield>\n    </datafield>\n    <datafield tag='919' ind1=' ' ind2=' '>\n      <subfield code='a'>ABM-6918</subfield>\n    </datafield>\n    <datafield tag='918' ind1=' ' ind2=' '>\n      <subfield code='a'>495144</subfield>\n    </datafield>\n  </record>\n</collection>",
+    "staff_only": "N",
+    "date_created": 740116800000,
+    "date_modified": 1237880396000,
+    "holdings": [
+      {
+        "bib_id": 495144,
+        "former_holdings_id": "495144-2-14",
+        "holdings_type": "print",
+        "staff_only": "N",
+        "date_created": 1421864361000,
+        "shelving_order": "NK 008912 .G67",
+        "unique_id_prefix": "who",
+        "call_number_type_id": 2,
+        "call_number": "NK8912 .G67",
+        "location": "BOOKBOT-STACKS",
+        "location_level": "SHELVING",
+        "items": [
+          {
+            "barcode": "S00408217M",
+            "copy_number": 1,
+            "fast_add": "N",
+            "staff_only": "N",
+            "num_pieces": 1,
+            "price": 0,
+            "date_created": 744264000000,
+            "date_updated": 1403691372000,
+            "unique_id_prefix": "wio",
+            "call_number_type_id": 2,
+            "item_type_id": "5",
+            "location_id": "80"
+          }
+        ],
+        "stat_search_codes": [],
+        "location_id": "80"
+      }
+    ]
+  }
+
+  {
+    "holdings": [
+      {
+        "bib_id": 55,
+        "former_holdings_id": "55-1-1",
+        "holdings_type": "print",
+        "staff_only": "N",
+        "date_created": 1421864361000,
+        "shelving_order": null,
+        "unique_id_prefix": "who",
+        "call_number_type_id": null,
+        "call_number": null,
+        "location": "DHHILL-RESERVES",
+        "location_level": "SHELVING",
+        "items": [
+          {
+            "item_id": 3541685,
+            "holdings_id": 2973449,
+            "location": "DHHILL-RESERVES",
+            "location_level": "SHELVING",
+            "barcode": "HAJN-5120-00001",
+            "copy_number": 1,
+            "fast_add": "N",
+            "staff_only": "N",
+            "num_pieces": 1,
+            "price": 0,
+            "date_created": 1019016000000,
+            "date_updated": 1403691372000,
+            "unique_id_prefix": "wio",
+            "call_number_type_id": null,
+            "item_type_id": "5",
+            "location_id": "213"
+          }
+        ],
+        "stat_search_codes": [],
+        "holdings_id": 2973449,
+        "location_id": "213"
+      }
+    ],
+    "bib_id": "55",
+    "content": "<collection xmlns='http://www.loc.gov/MARC21/slim'>\n  <record>\n    <leader>00172cam a2200073   4500</leader>\n    <controlfield tag='001'>55</controlfield>\n    <datafield tag='035' ind1=' ' ind2=' '>\n      <subfield code='a'>(Sirsi) AJN-5120</subfield>\n    </datafield>\n    <datafield tag='949' ind1=' ' ind2=' '>\n      <subfield code='w'>LC</subfield>\n      <subfield code='i'>HAJN-5120-00001</subfield>\n      <subfield code='m'>DHHILL</subfield>\n      <subfield code='l'>RESERVES </subfield>\n      <subfield code='r'>Y</subfield>\n      <subfield code='t'>BOOK</subfield>\n      <subfield code='u'>04/17/2002</subfield>\n    </datafield>\n    <datafield tag='596' ind1=' ' ind2=' '>\n      <subfield code='a'>1</subfield>\n    </datafield>\n    <datafield tag='918' ind1=' ' ind2=' '>\n      <subfield code='a'>55</subfield>\n    </datafield>\n  </record>\n</collection>",
+    "staff_only": "Y",
+    "date_created": 1040675227000,
+    "date_modified": 1400506501000
+  }
+
+  {
+    "holdings": [
+      {
+        "bib_id": 1955855,
+        "former_holdings_id": "1955855-1-1",
+        "holdings_type": "print",
+        "staff_only": "N",
+        "date_created": 1421864361000,
+        "shelving_order": "QA 000611.28 .L35  2006",
+        "unique_id_prefix": "who",
+        "call_number_type_id": 2,
+        "call_number": "QA611.28 .L35 2006",
+        "location": "DHHILL-STACKS",
+        "location_level": "SHELVING",
+        "items": [
+          {
+            "item_id": 3541686,
+            "holdings_id": 2973450,
+            "location": "DHHILL-STACKS",
+            "location_level": "SHELVING",
+            "barcode": "S02657084W",
+            "copy_number": 1,
+            "fast_add": "N",
+            "staff_only": "N",
+            "num_pieces": 1,
+            "price": 0,
+            "date_created": 1171462119000,
+            "date_updated": 1403691372000,
+            "unique_id_prefix": "wio",
+            "call_number_type_id": 2,
+            "item_type_id": "5",
+            "location_id": "232"
+          }
+        ],
+        "stat_search_codes": [],
+        "holdings_id": 2973450,
+        "location_id": "232"
+      }
+    ],
+    "bib_id": "1955855",
+    "content": "<collection xmlns='http://www.loc.gov/MARC21/slim'>\n  <record>\n    <leader>00988nam a2200313Ia 4500</leader>\n    <controlfield tag='001'>1955855</controlfield>\n    <controlfield tag='003'>NcRS</controlfield>\n    <controlfield tag='005'>20070530021514.0</controlfield>\n    <controlfield tag='008'>060406s2006    enk      b    001 0 eng d</controlfield>\n    <datafield tag='020' ind1=' ' ind2=' '>\n      <subfield code='a'>1904868460</subfield>\n    </datafield>\n    <datafield tag='024' ind1='3' ind2=' '>\n      <subfield code='a'>9781904868460</subfield>\n    </datafield>\n    <datafield tag='035' ind1=' ' ind2=' '>\n      <subfield code='a'>(OCoLC)65552686</subfield>\n    </datafield>\n    <datafield tag='040' ind1=' ' ind2=' '>\n      <subfield code='a'>FLT</subfield>\n      <subfield code='c'>FLT</subfield>\n      <subfield code='d'>FLT</subfield>\n      <subfield code='d'>YDX</subfield>\n      <subfield code='d'>OCLCQ</subfield>\n    </datafield>\n    <datafield tag='049' ind1=' ' ind2=' '>\n      <subfield code='a'>NRCC</subfield>\n      <subfield code='x'>cdb</subfield>\n    </datafield>\n    <datafield tag='090' ind1=' ' ind2=' '>\n      <subfield code='a'>QA611.28</subfield>\n      <subfield code='b'>.L35 2006</subfield>\n    </datafield>\n    <datafield tag='100' ind1='1' ind2=' '>\n      <subfield code='a'>Lakshmikantham, V.,</subfield>\n      <subfield code='d'>1926-</subfield>\n    </datafield>\n    <datafield tag='245' ind1='1' ind2='0'>\n      <subfield code='a'>Theory of set differential equations in metric spaces /</subfield>\n      <subfield code='c'>V. Lakshmikantham, T. Gnana Bhaskar, J. Vasundhara Devi.</subfield>\n    </datafield>\n    <datafield tag='260' ind1=' ' ind2=' '>\n      <subfield code='a'>Cambridge, UK :</subfield>\n      <subfield code='b'>Cambridge Scientific Publishers,</subfield>\n      <subfield code='c'>2006.</subfield>\n    </datafield>\n    <datafield tag='300' ind1=' ' ind2=' '>\n      <subfield code='a'>ix, 204 p. ;</subfield>\n      <subfield code='c'>24 cm.</subfield>\n    </datafield>\n    <datafield tag='504' ind1=' ' ind2=' '>\n      <subfield code='a'>Includes bibliographical references and index.</subfield>\n    </datafield>\n    <datafield tag='596' ind1=' ' ind2=' '>\n      <subfield code='a'>1</subfield>\n    </datafield>\n    <datafield tag='650' ind1=' ' ind2='0'>\n      <subfield code='a'>Metric spaces</subfield>\n      <subfield code='x'>Analysis.</subfield>\n    </datafield>\n    <datafield tag='650' ind1=' ' ind2='4'>\n      <subfield code='a'>Set differential equations.</subfield>\n    </datafield>\n    <datafield tag='700' ind1='1' ind2=' '>\n      <subfield code='a'>Lakshmikantham, V.,</subfield>\n      <subfield code='d'>1926-</subfield>\n    </datafield>\n    <datafield tag='700' ind1='1' ind2=' '>\n      <subfield code='a'>Gnana Bhaskar, T.</subfield>\n      <subfield code='q'>(Tenali)</subfield>\n    </datafield>\n    <datafield tag='700' ind1='1' ind2=' '>\n      <subfield code='a'>Vasundhara Devi, J.</subfield>\n    </datafield>\n    <datafield tag='994' ind1=' ' ind2=' '>\n      <subfield code='a'>C0</subfield>\n      <subfield code='b'>NRC</subfield>\n    </datafield>\n    <datafield tag='918' ind1=' ' ind2=' '>\n      <subfield code='a'>1955855</subfield>\n    </datafield>\n    <datafield tag='909' ind1=' ' ind2=' '>\n      <subfield code='a'>20070530</subfield>\n    </datafield>\n    <datafield tag='901' ind1=' ' ind2=' '>\n      <subfield code='a'>ocm65552686</subfield>\n      <subfield code='3'>NcRS</subfield>\n    </datafield>\n  </record>\n</collection>",
+    "staff_only": "N",
+    "date_created": 1171462119000,
+    "date_modified": 1224079887000
+  }

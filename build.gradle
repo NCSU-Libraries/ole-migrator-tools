@@ -1,0 +1,124 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+project.version = "0.1-SNAPSHOT"
+
+allprojects {
+    apply plugin: 'groovy'
+    apply plugin: 'java'
+
+    project.group = "org.kuali.ole.contrib"
+
+    version = "1.0-SNAPSHOT"
+
+    //sourceCompatibility=1.8
+    //targetCompatibility=1.8
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+    }
+
+	/**
+	 * Apparently this nonsense is needed to use the built-in
+	 * groovyDoc target ... ?
+	 * @see http://forums.gradle.org/gradle/topics/gradle_task_groovydoc_failing_with_noclassdeffounderror
+	 * @see https://issues.gradle.org/browse/GRADLE-3174
+	 **/
+	configurations {
+		groovyDoc.extendsFrom(runtime)
+	    compile.transitive = true
+	}
+
+	groovydoc {
+		def title = "NCSU OLE Bibliographic Data Migrator"
+		groovyClasspath = project.configurations.groovyDoc
+
+	}
+
+    dependencies {
+        compile  'org.codehaus.groovy:groovy-all:2.3.9:indy@jar'
+		testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+		groovyDoc 'org.fusesource.jansi:jansi:1.11@jar'
+    }
+
+	task compile(dependsOn: [compileJava, compileGroovy]) << {
+		description "Master compile task (Java and Groovy)"
+        sourceSets.main.java.srcDirs = []
+        sourceSets.main.groovy.srcDir 'src/main/java'
+
+	}
+
+    tasks.withType(JavaCompile) {
+        options.incremental = true
+    }
+}
+
+buildscript {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		jcenter()		
+	}
+}
+
+// note that we're not using << because we want to read the 
+// environment configuration *no matter what we're doing**
+task readConfiguration << {
+	def env = hasProperty("env") ? env : 'dev'
+	println "Environment set to ${env}"	
+	def config = new ConfigSlurper(env).parse( file("config.groovy").toURI().toURL())
+	project.ext {
+		environment = env
+		config = config
+	}
+}
+
+task createMigration << {
+	def md = new File("migration")
+		if ( md.directory ) {
+			throw new IllegalStateException("${md.absolutePath} already exists.  Will not overwrite.")
+		}
+		md.mkdir()
+		def sources = [ "src/main/groovy", "src/main/resource", 'src/test/groovy', 'src/test/resource' ].collect { new File(md, it) }.each { it.mkdirs() }
+
+	def pkg = hasProperty("packageName") ? property('packageName') : 'org.kuali.ole.contrib.main'
+	def pkgDir = new File('migration/src/main/groovy', pkg.replaceAll("\\.", "/"))
+
+	copy {
+		from('templates') {
+			include 'config.groovy', 'build.gradle'
+			expand(packageName: pkg)
+
+		}
+		into 'migration'
+	}
+
+	copy {
+		from('templates') {
+			include 'driver.groovy'
+		}
+		into 'migration'
+	}
+
+	copy {
+		from('templates') {
+			include 'Main.groovy'
+			expand(packageName: pkg)
+		}
+		into "${pkgDir}"
+	}
+
+	copy {
+		from('templates') {
+			include 'src/test/resource/*.txt'
+			include 'src/main/resource/*.groovy'
+		}
+		into "migration"
+	}
+
+
+	println "HEYLO"
+
+}
+
+
