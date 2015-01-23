@@ -53,7 +53,7 @@ If you intend to run this on a 'nix system (recommended), you might want
 to use [GVM](http://gvmtool.net) to manage the installation and easy
 upgrade of Gradle and Groovy.
 
-Use of (GPars)[https://gpars.codehaus.org] (concurrency features for
+Use of [GPars](https://gpars.codehaus.org) (concurrency features for
 Groovy/Java) is suggested to improve performance where desired, but
 not required.  Sample drivers that show you how to use GPars are
 provided.
@@ -64,8 +64,11 @@ provided.
 1. Clone this repository
 1. `gradle groovydoc`
 1. read the groovydocs!
-1. `gradle createMigration` to create the `migration` subproject
-directory and starter files.  1. customize `driver.groovy`, including any support classes you might need.
+1. `gradle createMigration` to create the `migration` subproject directory and starter files.  
+1. edit `config.groovy` to allow you to connect to your OLE database.
+1. write some code (`driver.groovy` and any support classes you might need).
+
+Other sample drivers are in the `templates` directory.
 
 The primary job of the driver script is to feed records into
 "persistors" (`org.kuali.ole.contrib.persistors` package and its
@@ -79,10 +82,7 @@ Check the documentation on classes in the `loaders` subpackage for
 information about the data structure formats (generally, Maps) these
 Persistors expect.
 
-You will need to edit the configuration sample file  to at least provide
-proper connection information for your OLE database, and put all this
-logic together in your driver script.  You can execute your driver
-script by running `gradle run`. 
+Execute your driver script with `gradle run`. 
 
 ### Logging Configuration
 
@@ -90,8 +90,7 @@ Logging is provided by Groovy's Logging AST transformation (@Slf4j
 annotations on classes).  The default log level is INFO and all output
 is sent to STDOUT. This is configurable by editing
 `migration/src/main/resources/logback.groovy`, documentation for which
-is available at
-[http://logback.qos.ch/manual/groovy.html](http://logback.qos.ch/manual/groovy.html).
+is available in the [logback manual](http://logback.qos.ch/manual/groovy.html).
 
 ### Viewing Groovydoc
 
@@ -105,14 +104,15 @@ these document the basic usage and input formats.
 ## Future Development
 
 This project contains stubs, half-finished ideas, and other non-working
-code.  Feedback and especially contributions are certainly welcome.
+code.  Feedback and especially pull requests/contributions are certainly
+welcome.
 
 Licensing issues prevent us from providing working examples of an ILS
 migration.
 
-The HTTP persistor stub is intended to be used with the existing
+The HTTP persistor stub was intended to be used with the existing
 Docstore API, which reportedly has performance issues with large record
-sets, so this implmentation exists as a mere placeholder.
+sets, so this implementation exists as a mere placeholder.
 
 The JDBC persistor contains parts that have been tested and found to
 work properly, but which were also much slower than the current "loader
@@ -122,8 +122,11 @@ For those who wish to implement the bulk of their data migration logic
 in something other than Groovy or Java, there is a basic JSON parser
 class which can churn a stream of JSON objects into source for Groovy
 data structures suitable for use with the Persistor classes.  See
-`org.kuali.ole.contrib.json.JsonStreamReader` for more info.
+`org.kuali.ole.contrib.json.JsonStreamReader` and the README in the 
+`migrator-base` subproject for more info.
 
 ## Notes
 
-Despite the package names, this software is not an official part of the Kuali OLE project, and all copyrights are retained by North Carolina State University.  The software is provided under the GNU GPL v3 license.
+Despite the package names, this software is not an official part of the Kuali
+OLE project, and all copyrights are retained by North Carolina State
+University.  The software is provided under the GNU GPL v3 license.
