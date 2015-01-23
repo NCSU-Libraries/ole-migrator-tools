@@ -1,3 +1,6 @@
+migration/
 build/
 *.class
 *.jar
+.idea
+.gradle

@@ -1,0 +1,2 @@
+logback.groovy is your logging configuration file; if you delete that, you'll
+have no control over what gets logged where, but things will still work.

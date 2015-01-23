@@ -115,13 +115,14 @@ import static com.google.common.collect.Sets.newHashSet
  <td>In</td>
  <td>N*</td>
  <td>Required if call number is set. Value is ID in OLE database (ole_cat_shlvg_schm_t) -- common values here would be
-  2 for LCC, 3 for Dewey, 5 for SUDOC.</td>
+  2 for LCC, 3 for Dewey, 5 for SUDOC.  </td>
  </tr>
  <tr>
   <td><code>shelving_order</code></td>
   <td>String</td>
   <td>N</td>
-  <td>"padded" call number (for browsing)</td>
+  <td>"padded" call number (for browsing, when available for the classification
+  scheme)</td>
   </tr>
  <tr>
  <td><code>location_id</code></td>
@@ -370,6 +371,8 @@ class HoldingsPersistor {
 
     private Sql oleSql
 
+    private Set<String> unknownLocationCodes = new HashSet<String>()
+
     /**
      * Queries for extracting data (ids, reference data) from the OLE database.
      */
@@ -456,10 +459,21 @@ class HoldingsPersistor {
     }
 
     protected boolean addRecord(Map<String, ?> record) {
-                // add the holdings and any IDs that need to be added
         record.holdings_id = record.holdings_id ?: counters.holdings()
         def hid = record.holdings_id
-        record.location_id = record.location_id ?: refData.locations[record.remove("location_code")]
+        def locationCode = record.remove("location_code")
+        record.location_id = record.location_id ?: refData.locations[locationCode]
+        if ( record.location_id == null && locationCode != null) {
+            // this is a problem, so report it, but keep on chugging
+            // first, write out the value into the "location" property.
+            // this gives us a shot at fixing things directly in the database.
+            record.location = locationCode
+            if ( ! ( locationCode in unknownLocationCodes ) ) {
+                log.warn("Encountered unknown location code '${locationCode}' for holdings w/id ${record.holdings_id} [bib: ${record.bib_id}]")
+                unknownLocationCodes.add(locationCode)
+            }
+        }
+
 
         setDefaults(record)
 
@@ -468,7 +482,16 @@ class HoldingsPersistor {
             item.holdings_id = hid
             item.item_id = item.item_id ?: counters.items()
             item.item_type_id = item.item_type_id ?: refData.itemTypes[item.remove("item_type_code")]
-            item.location_id = item.location_id ?: refData.locations[item.remove("location_code")]
+
+            // scrub location info from items unless they're different from the ones on the parent holdings.
+            if ( item.location_code == locationCode || item.location_id == record.location_id ) {
+                item.location = ""
+                item.location_id = null
+                item.location_level = null
+            } else {
+                item.location_id = item.location_id ?: refData.locations[item.remove("location_code")]
+            }
+
             if ( item.containsKey('stat_search_codes') ) {
                 item.stat_search_codes = item.stat_search_codes.collect {
                     code ->
@@ -698,7 +721,7 @@ class HoldingsPersistor {
         def outputDir = new File( loader.config.persistor.outputDir ?: "/tmp" )
         persistables.each {
             String pType, Map data ->
-                def file = new File(outputDir, "test-${pType}.csv")
+                def file = new File(outputDir, "ole-${pType}.csv")
                 data.file = file
                 data.mapper = analyzer.getLoaderColumnMapper(data.table)
                 data.loaderQuery = analyzer.getDataLoadTemplate(file.name, data.table)

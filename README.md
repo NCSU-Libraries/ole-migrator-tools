@@ -61,7 +61,8 @@ provided.
 
 1. Install required software
 1. Clone this repository
-1. `gradle groovydoc` 
+1. `gradle groovydoc`
+1. read the groovydocs!
 1. `gradle createMigration` to create the `migration` subproject
 directory and starter files.  1. customize `driver.groovy`, including any support classes you might need.
 
@@ -93,7 +94,7 @@ is available at
 
 ### Viewing Groovydoc
 
-`gradle groovydoc` creates documentaiton in
+`gradle groovydoc` creates documentation in
 `$PROJECT_ROOT/migrator-base/build/docs/groovydoc/index.html`.  Pay
 particular attention to the
 `org.kuali.ole.contrib.persistors.common.BibPersistorSQLBase` and

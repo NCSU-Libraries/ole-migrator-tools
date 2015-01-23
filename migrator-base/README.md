@@ -39,6 +39,18 @@ approach are still here, and available to be built upon.
 There is also a placeholder for a "persistor" strategy that used the OLE
 Docstore API.  Time constraints have meant this didn't get developed.
 
+### More on the "loader" Persistor
+
+By default, the output "loader" files will be put into `/tmp` or, if
+ no such directory exists, your system's temporary dir (the value of
+ `java.io.tmpdir` system property).  All created files will start with
+ `ole-` and most will be in CSV; bibliographic records will be in a file
+ named `ole-bibs.txt` and use '$$$$' as a field separator and `--\n--`
+ (two minus signs on either side of a UNIX newline) as a record separator.
+
+ See the package-level groovydoc for `org.kuali.ole.contrib.persistor.loader`
+ for more on how to load these files into your MySQL database.
+
 ## Utilities
 
 Currently a very basic "streaming JSON reader" is included should you
@@ -46,7 +58,10 @@ wish to handle the bulk of your migration using your programming
 language of choice to handle the bulk of your data migration work.
 
 The general idea is to create "streamed" JSON, which is not actually
-JSON, but consists of a series of JSON objects in the formats expected by the persistors (read the groovydocs) that are separated by spaces rather than wrapped up into arrays.  That is, rather than generating true JSON files that look like:
+JSON, but consists of a series of JSON objects in the formats expected
+by the persistors (read the groovydocs) that are separated by spaces
+rather than wrapped up into arrays.  That is, rather than generating
+true JSON files that look like:
 
 ```JSON
 
@@ -62,7 +77,7 @@ You would generate a file that looks like
 
 ```JSON
 
-{ .. record 1 }
+{ record 1 }
 { ... record 2 }
 { ...record 3 }
 
