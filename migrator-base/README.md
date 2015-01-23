@@ -14,7 +14,7 @@ the parent project and then browse through the generated output of that task
 ConfigLoader
 ------------
 
-`org.kuali.ole.contrib.ConfigLoader` is used by other classes in the framework.  It provides a standard configuration file format and a facility for managing JDBC DataSources, primarily.  See (ConfigSlurper)[http://groovy.codehaus.org/ConfigSlurper] for more information on the file format.
+`org.kuali.ole.contrib.ConfigLoader` is used by other classes in the framework.  It provides a standard configuration file format and a facility for managing JDBC DataSources, primarily.  See [ConfigSlurper](http://groovy.codehaus.org/ConfigSlurper) for more information on the file format.
 
 A basic sample of a config file is available in the `templates` directory in the project root, and will be put into the right location by running `gradle createMigration` in the root directory.  See project README for more info.
 
@@ -65,10 +65,9 @@ true JSON files that look like:
 
 ```JSON
 
-    [{ record 1 },
-     { record 2 },
-    ...
-    { record NNNN }
+    [{ bib_id  1, ... }
+     { bib_id: 2 ...},
+    { bib_id: NNNN, ... }
     ]
 
 ```
