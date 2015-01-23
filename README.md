@@ -1,7 +1,8 @@
 #OLE Migration Toolkit
 
 A toolkit to assist in the initial migration of bibliographic (MARC
-records, holdings, and items)  data into  OLE from an existing ILS.
+records, holdings, and items) data into Kuali OLE (hereafter, "OLE")
+from an existing ILS.
 
 ##Overview
 
@@ -9,7 +10,7 @@ OLE's current facilities for bibliographic data import do not perform
 well.  In the future, need for this sort of toolkit may be obviated by
 performance improvements to OLE's APIs, but you only need to migrate
 your data once, and "direct" methods will always be faster than ones
-that go through layers of software.
+that go through layers of software.  Until that day, you might try this.
 
 The aim of this project is to provide tools that perform well and handle
 at least the "last mile" of ensuring your bibliographic data is
@@ -27,12 +28,12 @@ database rows.
 OLE database.**
 
 This toolkit assumes that you have already built OLE and created its
-database, see (OLE Developer Installation
-Guide)[https://wiki.kuali.org/display/OLE/Developer+Installation+Guide]
+database, see [OLE Developer Installation
+Guide](https://wiki.kuali.org/display/OLE/Developer+Installation+Guide)
 for details.  It further assumes that you have already loaded your local
 item types, locations, and statistical search codes.  Some information
-about how to do this is available at (Impex, Bootstrap, Demo, and Local
-Data)[https://wiki.kuali.org/display/OLE/Impex,+Bootstrap,+Demo+and+Local+Data]
+about how to do this is available at [Impex, Bootstrap, Demo, and Local
+Data](https://wiki.kuali.org/display/OLE/Impex,+Bootstrap,+Demo+and+Local+Data)
 in the Kuali wiki.  As the tables where this data is stored are
 relatively straightforward, it is also possible to load this data via
 scripting.
