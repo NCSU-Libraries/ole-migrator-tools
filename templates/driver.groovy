@@ -27,12 +27,26 @@ def persistor = new BibRecordPersistor(configLoader)
 // sample data file is available on the classpath;
 // this is just used here to illustrate that your
 // job is to feed Map-based records into your persistor(s).
-def recordStream = JsonStreamReader.getClass().getResourceAsStream("/data.json")
+def recordStream = new File("../templates/src/test/resource/data.json").newInputStream()
 
+/**
+ * Note that the above recordStream is just feeding bib records; for holdings,
+ * you will probably want to "chain" the persistor for those to the bib holdings * persistor -- this ensures that the bib data is written to the DB before the
+ * holdings data that references it.
+ 
+ * Here's how that might go:
+
+  def holdingsPersistor = new org.kuali.ole.contrib.persistor.loader.HoldingsPersistor(configLoader)
+  // by adding this, you ensure that the holdingsPersistor's cache will be flushed to the database after the bibPersistor has flushed its cache
+ bibPersistor.addCommitListener( holdingsPersistor.commitListener) 
+**/
 
 reader.eachRecordInStream(recordStream) {
     Map<String,?> rec -> 
         persistor <<  rec
+        // here is where you might build holdings for the current bib 
+        // record.
+        // holdingsPersistor <<  myHoldingsRecordBuilder.getHoldings(rec.bib_id)
 }
 
 // make sure the persistor has done all the work it needs to do and
