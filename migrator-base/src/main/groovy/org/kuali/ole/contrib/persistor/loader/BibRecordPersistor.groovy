@@ -84,6 +84,11 @@ class BibRecordPersistor extends BibPersistorSQLBase {
         recordMap.unique_id_prefix = 'wbm'
         recordMap.former_id = recordMap.bib_id
         recordMap.status = 'Catalogued'
+        // coerce bib_id to Integer 
+        if ( recordMap.bib_id instanceof String ) {
+            recordMap.bib_id = Integer.valueOf(recordMap.bib_id, 10)
+        }
+        assert recordMap.bib_id instanceof Integer, "${bib_id} is not numeric (${bib_id.class.name})"
 
         if (('shadow' in recordMap) && !('staff_only' in recordMap)) {
             recordMap['staff_only'] = recordMap['shadow'] ? 'Y' : 'N'
@@ -131,7 +136,7 @@ class BibRecordPersistor extends BibPersistorSQLBase {
         def insertRecords = records.collect { it.subMap(insert_fields) }
         insertRecords.each {
            Map rec ->
-               int bibId = Integer.valueOf( rec.bib_id, 10 )
+               int bibId = rec.bib_id
                if ( seen.val.get(bibId) ) {
                     log.warn "Duplicate bib id ${bibId}"
                     return

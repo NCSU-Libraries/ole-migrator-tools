@@ -29,9 +29,9 @@ import static com.google.common.collect.Sets.newHashSet
  *    <tbody>
  *        <tr>
  <td><code>bib_id</code></td>
- <td>String/Integer</td>
+ <td>Integer</td>
  <td>Y</td>
- <td>Although the field is defined as a string, OLE assigns ids based on incrementing integers.</td>
+ <td>Will also accept strings that can be converted to Integers.</td>
  </tr>
  <tr>
  <td><code>former_id</code></td>
