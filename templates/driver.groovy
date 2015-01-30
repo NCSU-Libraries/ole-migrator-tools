@@ -9,7 +9,7 @@ import org.kuali.ole.contrib.ConfigLoader
 
 import org.kuali.ole.contrib.json.JsonStreamReader
 
-import org.kuali.ole.contrib.persistors.loader.BibRecordPersistor
+import org.kuali.ole.contrib.persistor.loader.BibRecordPersistor
 
 // loads config.groovy and uses the "development" 
 // environment from it
