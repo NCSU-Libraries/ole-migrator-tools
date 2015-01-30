@@ -30,7 +30,7 @@ def persistor = new BibRecordPersistor(configLoader)
 def recordStream = JsonStreamReader.getClass().getResourceAsStream("/data.json")
 
 
-reader.eachRecordFromStream(recordStream) {
+reader.eachRecordInStream(recordStream) {
     Map<String,?> rec -> 
         persistor <<  rec
 }
